@@ -1,0 +1,26 @@
+ [
+  {
+    "id": 1,
+    "name": "Mj Melendrez",
+    "studentNumber": "20240981",
+    "course": "Information Technology",
+    "year": "3rd Year",
+    "email": "mjmelendrez@gmail.com"
+  },
+  {
+    "id": 2,
+    "name": "Mary Angeline Embing",
+    "studentNumber": "20245502",
+    "course": "Information Technology",
+    "year": "3rd Year",
+    "email": "maryangelineembing@gmail.com"
+  },
+  {
+    "id": 3,
+    "name": "Cj Roncales",
+    "studentNumber": "20248243",
+    "course": "Information Technology",
+    "year": "3rd Year",
+    "email": "cjroncales@gmail.com"
+  }
+]

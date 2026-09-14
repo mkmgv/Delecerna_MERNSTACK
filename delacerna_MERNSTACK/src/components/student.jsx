@@ -1,14 +1,26 @@
-function student({ name, age, section, studentnumber, course }) {
+import { Link } from "react-router-dom";
+function Student({ student }) {
   return (
-    <div>
-      <h2>Student Information</h2>
-      <p>Name: {name}</p>
-      <p>Age: {age}</p>
-      <p>Section: {section}</p>
-      <p>Student Number: {studentnumber}</p>
-      <p>Course: {course}</p>
+    <div className="student-card">
+      <h2>{student.name}</h2>
+
+      <p>
+        <strong>Student Number:</strong> {student.studentnumber}
+      </p>
+
+      <p>
+        <strong>Course:</strong> {student.course}
+      </p>
+
+      <p>
+        <strong>Year:</strong> {student.year}
+      </p>
+
+      <Link to={`/students/${student.id}`} className="details-btn">
+        View Full Details
+      </Link>
     </div>
   );
 }
 
-export default student;
+export default Student;

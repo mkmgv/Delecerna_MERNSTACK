@@ -1,33 +1,29 @@
-import Student from './components/student.jsx';
-import Subject from './components/subject.jsx';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Students from "./pages/Students";
+import StudentDetails from "./pages/StudentDetails";
 
 function App() {
   return (
-    <div>
-      <Student
-        name="Kim Delacerna"
-        age="20"
-        section="BSIT-3-1"
-        studentnumber="2024001990"
-        course="Information Technology"
-      />
+    <BrowserRouter>
+      <Navbar />
 
-      <Student
-        name="Mj Melendrez"
-        age="20"
-        section="BSIT-3-1"
-        studentnumber="2024001990"
-        course="Information Technology"
-      />
-
-      <Subject
-        subjectCode="CCL305"
-        subjectName="Web Development"
-        instructor="Mr. Delacerna"
-        schedule="Monday 8:00 AM - 10:00 AM"
-        units="3"
-      />
-    </div>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/students"
+          element={<Students />}
+        />
+        <Route
+          path="/students/:id"
+          element={<StudentDetails />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
