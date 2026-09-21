@@ -4,153 +4,663 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f0ffd8;
-  color: #000000;
+html {
+  scroll-behavior: smooth;
 }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fffaf0;
+  color: #333333;
+  min-height: 100vh;
+}
+/* ================================
+   NAVBAR
+================================ */
 
 .navbar {
   width: 100%;
-  background: #e6ae17;
-  color: rgb(247, 202, 57);
-  padding: 50px 50px;
+  background: #f59e0b;
+  color: white;
+  padding: 14px 40px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+/* Logo */
 .logo {
-  font-size: 24px;
+  color: white;
+  font-size: 22px;
   font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: 0.3s;
 }
 
+.logo:hover {
+  color: #fff7d6;
+}
+
+/* Navigation Links */
 .nav-links {
   display: flex;
-  gap: 25px;
+  align-items: center;
+  gap: 5px;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+
+  padding: 8px 14px;
+  border-radius: 6px;
+
+  transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #ffd166;
+  background: #d97706;
+  color: white;
 }
 
+/* Responsive */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 14px 25px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-links a {
+    padding: 7px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 18px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+
+/* ================================
+   HOME PAGE
+================================ */
+
 .home {
-  max-width: 900px;
-  margin: 100px auto;
+  max-width: 1000px;
+  margin: 60px auto;
+
   text-align: center;
-  padding: 40px;
+
+  padding: 55px 40px;
+
+  background: white;
+
+  border-radius: 18px;
+
+  border-top: 5px solid #f59e0b;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 .home h1 {
-  font-size: 40px;
-  margin-bottom: 20px;
+  font-size: 42px;
+
+  color: #d97706;
+
+  margin-bottom: 18px;
 }
 
 .home p {
   font-size: 18px;
-  line-height: 1.6;
+
+  color: #666666;
+
+  line-height: 1.7;
+
+  margin-bottom: 30px;
 }
+
+
+/* ================================
+   HOME BUTTONS
+================================ */
+
+.home-buttons {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  flex-wrap: wrap;
+}
+
+.home-buttons a {
+  display: inline-block;
+
+  padding: 12px 22px;
+
+  background: #f59e0b;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+  border-radius: 8px;
+
+  transition: all 0.3s ease;
+}
+
+.home-buttons a:hover {
+  background: #d97706;
+
+  transform: translateY(-2px);
+}
+
+
+/* ================================
+   STUDENT PAGE
+================================ */
 
 .students-page {
   max-width: 1100px;
-  margin: 50px auto;
+
+  margin: 45px auto;
+
   padding: 20px;
 }
 
 .students-page h1 {
   text-align: center;
+
+  color: #d97706;
+
+  font-size: 34px;
+
   margin-bottom: 35px;
 }
 
+
+/* ================================
+   STUDENT GRID
+================================ */
+
 .student-container {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
+
   gap: 25px;
 }
 
+
+/* ================================
+   STUDENT CARD
+================================ */
+
 .student-card {
   background: white;
-  padding: 25px;
-  border-radius: 12px;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 28px;
 
-  transition: 0.3s;
+  border-radius: 15px;
+
+  border: 1px solid #f3d18b;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+  transition: all 0.3s ease;
 }
 
 .student-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+
+  border-color: #f59e0b;
 }
 
 .student-card h2 {
-  color: #1e3a5f;
-  margin-bottom: 20px;
+  color: #d97706;
+
+  margin-bottom: 18px;
+
+  font-size: 22px;
 }
 
 .student-card p {
   margin: 10px 0;
+
+  color: #555555;
+
+  line-height: 1.5;
 }
+
+.student-card strong {
+  color: #333333;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
 
 .details-btn,
 .back-btn {
   display: inline-block;
+
   margin-top: 20px;
+
   padding: 10px 18px;
 
-  background: #1e3a5f;
+  background: #f59e0b;
+
   color: white;
 
   text-decoration: none;
-  border-radius: 6px;
 
-  transition: 0.3s;
+  font-weight: 600;
+
+  border-radius: 7px;
+
+  transition: all 0.3s ease;
 }
 
 .details-btn:hover,
 .back-btn:hover {
-  background: #162d49;
+  background: #d97706;
+
+  transform: translateY(-2px);
 }
+
+
+/* ================================
+   STUDENT DETAILS
+================================ */
 
 .details-page {
   max-width: 800px;
-  margin: 60px auto;
+
+  margin: 55px auto;
+
   padding: 20px;
 }
 
 .details-card {
   background: white;
-  padding: 40px;
-  border-radius: 15px;
 
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+
+  border-radius: 18px;
+
+  border: 1px solid #f3d18b;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 .details-card h1 {
-  color: #1e3a5f;
+  color: #d97706;
+
+  font-size: 32px;
+
   margin-bottom: 30px;
+
+  border-bottom: 3px solid #fbbf24;
+
+  padding-bottom: 15px;
 }
 
 .student-info p {
-  font-size: 18px;
+  font-size: 17px;
+
   margin: 18px 0;
+
+  padding: 13px 15px;
+
+  background: #fffaf0;
+
+  border-left: 4px solid #f59e0b;
+
+  border-radius: 6px;
+
+  color: #555555;
 }
 
-@media (max-width: 800px) {
-  .student-container {
+.student-info strong {
+  color: #d97706;
+}
+
+
+/* ================================
+   ADD STUDENT / ADD TEACHER FORM
+================================ */
+
+.form-page {
+  max-width: 700px;
+
+  margin: 45px auto;
+
+  padding: 20px;
+}
+
+.form-card {
+  background: white;
+
+  padding: 35px;
+
+  border-radius: 18px;
+
+  border-top: 5px solid #f59e0b;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.form-card h1 {
+  color: #d97706;
+
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-weight: 600;
+
+  color: #444444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: 1px solid #d6d6d6;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #f59e0b;
+
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+
+/* ================================
+   FORM BUTTONS
+================================ */
+
+.primary-btn {
+  padding: 12px 22px;
+
+  background: #f59e0b;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.primary-btn:hover {
+  background: #d97706;
+}
+
+.cancel-btn {
+  padding: 12px 22px;
+
+  background: #777777;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.cancel-btn:hover {
+  background: #555555;
+}
+
+
+/* ================================
+   TEACHER CARDS
+================================ */
+
+.teacher-container {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.teacher-card {
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 15px;
+
+  border: 1px solid #f3d18b;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+  transition: 0.3s;
+}
+
+.teacher-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #f59e0b;
+
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.teacher-card h2 {
+  color: #d97706;
+
+  margin-bottom: 15px;
+}
+
+.teacher-card p {
+  margin: 9px 0;
+
+  color: #555555;
+}
+
+
+/* ================================
+   DELETE BUTTON
+================================ */
+
+.delete-btn {
+  margin-top: 15px;
+
+  padding: 10px 16px;
+
+  background: #dc2626;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+
+/* ================================
+   EMPTY MESSAGE
+================================ */
+
+.empty-message {
+  background: white;
+
+  text-align: center;
+
+  padding: 50px 20px;
+
+  border-radius: 15px;
+
+  border-top: 4px solid #f59e0b;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+}
+
+.empty-message h2 {
+  color: #d97706;
+
+  margin-bottom: 10px;
+}
+
+.empty-message p {
+  color: #777777;
+}
+
+
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 900px) {
+
+  .navbar {
+    padding: 14px 25px;
+  }
+
+  .student-container,
+  .teacher-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home {
+    margin: 40px 20px;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .navbar {
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding: 14px 18px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+  .nav-links a {
+    padding: 7px 10px;
+
+    font-size: 14px;
+  }
+
+  .student-container,
+  .teacher-container {
     grid-template-columns: 1fr;
   }
 
-  .navbar {
-    padding: 18px 25px;
+  .home {
+    margin: 25px 15px;
+
+    padding: 40px 20px;
   }
 
   .home h1 {
     font-size: 30px;
   }
+
+  .home p {
+    font-size: 16px;
+  }
+
+  .details-page {
+    margin: 30px auto;
+
+    padding: 15px;
+  }
+
+  .details-card {
+    padding: 25px 20px;
+  }
+
+  .details-card h1 {
+    font-size: 26px;
+  }
 }
+

@@ -1,33 +1,32 @@
 import { Link } from "react-router-dom";
+
 function Navbar() {
   return (
-    <nav className="bg-blue-600 shadow-md">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <nav className="navbar">
+      {/* Logo */}
+      <Link to="/" className="logo">
+        Student Management System
+      </Link>
 
-        <Link
-          to="/"
-          className="text-white text-xl font-bold"
-        >
-          Student Management System
+      {/* Navigation */}
+      <div className="nav-links">
+        <Link to="/">Home</Link>
+
+        <Link to="/students">
+          Student List
         </Link>
-        <div className="flex items-center gap-2">
 
-          <Link
-            to="/"
-            className="text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
-          >
-            Home
-          </Link>
+        <Link to="/add-student">
+          + Add Student
+        </Link>
 
-          <Link
-            to="/students"
-            className="text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
-          >
-            Students
-          </Link>
+        <Link to="/teachers">
+          Teacher List
+        </Link>
 
-        </div>
-
+        <Link to="/add-teacher">
+          + Add Teacher
+        </Link>
       </div>
     </nav>
   );

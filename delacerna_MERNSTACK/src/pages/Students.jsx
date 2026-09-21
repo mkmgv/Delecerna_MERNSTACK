@@ -1,118 +1,84 @@
-import { useState } from "react";
-import students from "../data/students.json";
-import Student from "../components/student";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import studentsData from "../data/students.json";
+
 function Students() {
-  const [name, setName] = useState("");
-  const [studentnumber, setStudentNumber] = useState("");
-  const [course, setCourse] = useState("");
-  const [year, setYear] = useState("");
-  const [section, setSection] = useState("");
+  const [students, setStudents] = useState([]);
 
-  const [newStudents, setNewStudents] = useState([]);
+  useEffect(() => {
+    const savedStudents =
+      JSON.parse(localStorage.getItem("students")) || [];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!name || !studentnumber || !course || !year || !section) {
-      alert("Please fill in all fields.");
-      return;
-    }
-
-    const newStudent = {
-      id: students.length + newStudents.length + 1,
-      name: name,
-      studentnumber: studentnumber,
-      course: course,
-      year: year,
-      section: section,
-    };
-
-    setNewStudents([...newStudents, newStudent]);
-    setName("");
-    setStudentNumber("");
-    setCourse("");
-    setYear("");
-    setSection("");
-  };
-
-  const allStudents = [...students, ...newStudents];
+    setStudents([...studentsData, ...savedStudents]);
+  }, []);
 
   return (
-    <div className="page max-w-6xl mx-auto p-6">
+    <div className="students-page">
 
-      <h1 className="text-3xl font-bold mb-6">
-        Students
-      </h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1>Student List</h1>
 
-      <div className="student-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {allStudents.map((student) => (
-          <Student
-            key={student.id}
-            student={student}
-          />
-        ))}
+        <Link
+          to="/add-student"
+          className="bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700"
+        >
+          + Add Student
+        </Link>
       </div>
-      <div className="mt-10">
 
-        <h1 className="text-3xl font-bold mb-6">
-          Student Registration
-        </h1>
+      {students.length === 0 ? (
+        <div className="empty-message">
+          <h2>No Students Found</h2>
+          <p>Please add a student.</p>
+        </div>
+      ) : (
+        <div className="student-container">
 
-        <div className="border border-gray-300 rounded-lg p-6 shadow-sm">
+          {students.map((student) => (
+            <div
+              className="student-card"
+              key={student.id}
+            >
+              <h2>{student.name}</h2>
 
-          <h2 className="text-xl font-semibold mb-4">
-            Add Student
-          </h2>
+              <p>
+                <strong>Student Number:</strong>{" "}
+                {student.studentNumber}
+              </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <p>
+                <strong>Course:</strong>{" "}
+                {student.course}
+              </p>
 
-            <input
-              type="text"
-              className="border border-gray-300 p-3 rounded"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter name"
-            />
+              <p>
+                <strong>Year:</strong>{" "}
+                {student.year}
+              </p>
 
-            <input
-              type="text"
-              className="border border-gray-300 p-3 rounded"
-              value={studentnumber}
-              onChange={(e) => setStudentNumber(e.target.value)}
-              placeholder="Student Number"
-            />
-            <input
-              type="text"
-              className="border border-gray-300 p-3 rounded"
-              value={course}
-              onChange={(e) => setCourse(e.target.value)}
-              placeholder="Course"
-            />
-            <input
-              type="text"
-              className="border border-gray-300 p-3 rounded"
-              value={year}
-              onChange={(e) => setYear(e.target.value)}
-              placeholder="Year"
-            />
-            <input
-              type="text"
-              className="border border-gray-300 p-3 rounded"
-              value={section}
-              onChange={(e) => setSection(e.target.value)}
-              placeholder="Section"
-            />
+              <p>
+                <strong>Email:</strong>{" "}
+                {student.email}
+              </p>
 
-          </div>
-          <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold px-5 py-3 rounded mt-4"
-            onClick={handleSubmit}
-          >
-            Add Student
-          </button>
+              {student.address && (
+                <p>
+                  <strong>Address:</strong>{" "}
+                  {student.address}
+                </p>
+              )}
+
+              <Link
+                to={`/students/${student.id}`}
+                className="details-btn"
+              >
+                View Details
+              </Link>
+            </div>
+          ))}
 
         </div>
-      </div>
+      )}
 
     </div>
   );
